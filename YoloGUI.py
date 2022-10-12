@@ -25,29 +25,45 @@ class YoloGui(tk.Tk):
         self.threshold_var = tk.StringVar(self)
         self.threshold_var.set('0.3')
 
-        self.upload_box = tk.Entry(self, textvariable=self.image_var)
+        self.upload_frame = tk.LabelFrame(self, text='Add File')
+        self.upload_frame.grid(column=0, row=0)
+
+        self.upload_box = tk.Entry(self.upload_frame, textvariable=self.image_var, width=60)
         self.upload_box.grid(column=0, row=0)
 
-        self.upload_button = tk.Button(self, text='Browse', command=self.upload_file)
+        self.upload_button = tk.Button(self.upload_frame, text='Browse', command=self.upload_file)
         self.upload_button.grid(column=1, row=0)
 
-        self.confidence_box = tk.Spinbox(self, textvariable=self.confidence_var, increment=0.1, from_=0, to=100)
-        self.confidence_box.grid(column=0, row=1)
+        self.settings_frame = tk.LabelFrame(self, text='Settings')
+        self.settings_frame.grid(column=0, row=1)
 
-        self.threshold_box = tk.Spinbox(self, textvariable=self.threshold_var, increment=0.1, from_=0, to=100)
+        self.confidence_label = tk.Label(self.settings_frame, text='Confidence')
+        self.confidence_label.grid(column=0, row=0)
+
+        self.confidence_box = tk.Spinbox(self.settings_frame, textvariable=self.confidence_var, increment=0.1, from_=0, to=100, width=10)
+        self.confidence_box.grid(column=1, row=0)
+
+        self.threshold_label = tk.Label(self.settings_frame, text='Threshold')
+        self.threshold_label.grid(column=0, row=1)
+
+        self.threshold_box = tk.Spinbox(self.settings_frame, textvariable=self.threshold_var, increment=0.1, from_=0, to=100, width=10)
         self.threshold_box.grid(column=1, row=1)
 
-        self.start_button = tk.Button(self, text='Start', command=self.start)
-        self.start_button.grid(column=0, row=2)
+        self.buttons_frame = tk.Frame(self)
+        self.buttons_frame.grid(column=0, row=2)
 
-        self.quit_button = tk.Button(self, text='Quit', command=self.destroy)
-        self.quit_button.grid(column=1, row=2)
+        self.start_button = tk.Button(self.buttons_frame, text='Start', command=self.start)
+        self.start_button.grid(column=0, row=0)
+
+        self.quit_button = tk.Button(self.buttons_frame, text='Quit', command=self.destroy)
+        self.quit_button.grid(column=1, row=0)
 
     def upload_file(self):
         filename = filedialog.askopenfilename()
         self.image_var = filename
         self.upload_box.delete(0, tk.END)
         self.upload_box.insert(0, self.image_var)
+        self.upload_box.xview_moveto(1)
 
     def start(self):
         pass
