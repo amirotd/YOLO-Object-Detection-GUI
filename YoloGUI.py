@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from Yolo import Yolo
 
 
 class YoloGui(tk.Tk):
@@ -66,7 +67,8 @@ class YoloGui(tk.Tk):
         self.upload_box.xview_moveto(1)
 
     def start(self):
-        pass
+        y = Yolo(self.image_var, float(self.confidence_var.get()), float(self.threshold_var.get()))
+        y.start_process()
 
 
 if __name__ == '__main__':
