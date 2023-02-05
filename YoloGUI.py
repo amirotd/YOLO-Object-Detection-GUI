@@ -36,7 +36,7 @@ class YoloGui(tk.Tk):
         self.upload_box = tk.Entry(self.upload_frame, textvariable=self.image_var, width=60)
         self.upload_box.grid(column=0, row=0)
 
-        self.upload_button = tk.Button(self.upload_frame, text='Browse', command=self.upload_file)
+        self.upload_button = tk.Button(self.upload_frame, text='Browse', command=self.upload_file, bg='SteelBlue3', fg='white', activebackground='SteelBlue2')
         self.upload_button.grid(column=1, row=0)
 
         self.yolo_path_frame = tk.LabelFrame(self, text='Yolo Path')
@@ -45,7 +45,7 @@ class YoloGui(tk.Tk):
         self.yolo_path_box = tk.Entry(self.yolo_path_frame, textvariable=self.yolo_var, width=60)
         self.yolo_path_box.grid(column=0, row=0)
 
-        self.yolo_button = tk.Button(self.yolo_path_frame, text='Browse', command=self.set_path)
+        self.yolo_button = tk.Button(self.yolo_path_frame, text='Browse', command=self.set_path, bg='SteelBlue3', fg='white', activebackground='SteelBlue2')
         self.yolo_button.grid(column=1, row=0)
 
         self.settings_frame = tk.LabelFrame(self, text='Settings')
@@ -66,10 +66,10 @@ class YoloGui(tk.Tk):
         self.buttons_frame = tk.Frame(self)
         self.buttons_frame.grid(column=0, row=3)
 
-        self.start_button = tk.Button(self.buttons_frame, text='Start', command=self.start)
+        self.start_button = tk.Button(self.buttons_frame, text='Start', command=self.start, bg='SteelBlue3', fg='white', activebackground='SteelBlue2')
         self.start_button.grid(column=0, row=0)
 
-        self.quit_button = tk.Button(self.buttons_frame, text='Quit', command=self.destroy)
+        self.quit_button = tk.Button(self.buttons_frame, text='Quit', command=self.destroy, bg='SteelBlue3', fg='white', activebackground='SteelBlue2')
         self.quit_button.grid(column=1, row=0)
 
     def upload_file(self):
