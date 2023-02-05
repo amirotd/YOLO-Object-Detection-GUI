@@ -30,7 +30,7 @@ class YoloGui(tk.Tk):
         self.threshold_var = tk.StringVar(self)
         self.threshold_var.set('0.3')
 
-        self.upload_frame = tk.LabelFrame(self, text='Add File')
+        self.upload_frame = tk.LabelFrame(self, text='Add File', bg='LightSteelBlue2')
         self.upload_frame.grid(column=0, row=0)
 
         self.upload_box = tk.Entry(self.upload_frame, textvariable=self.image_var, width=60)
@@ -39,7 +39,7 @@ class YoloGui(tk.Tk):
         self.upload_button = tk.Button(self.upload_frame, text='Browse', command=self.upload_file, bg='SteelBlue3', fg='white', activebackground='SteelBlue2')
         self.upload_button.grid(column=1, row=0)
 
-        self.yolo_path_frame = tk.LabelFrame(self, text='Yolo Path')
+        self.yolo_path_frame = tk.LabelFrame(self, text='Yolo Path', bg='LightSteelBlue2')
         self.yolo_path_frame.grid(column=0, row=1)
 
         self.yolo_path_box = tk.Entry(self.yolo_path_frame, textvariable=self.yolo_var, width=60)
@@ -48,7 +48,7 @@ class YoloGui(tk.Tk):
         self.yolo_button = tk.Button(self.yolo_path_frame, text='Browse', command=self.set_path, bg='SteelBlue3', fg='white', activebackground='SteelBlue2')
         self.yolo_button.grid(column=1, row=0)
 
-        self.settings_frame = tk.LabelFrame(self, text='Settings')
+        self.settings_frame = tk.LabelFrame(self, text='Settings', bg='LightSteelBlue2')
         self.settings_frame.grid(column=0, row=2)
 
         self.confidence_label = tk.Label(self.settings_frame, text='Confidence')
