@@ -9,6 +9,7 @@ class YoloGui(tk.Tk):
 
         self.title("Yolo object detection")
         self.geometry('512x256+200+100')
+        self.configure(bg='LightSteelBlue2')
         self['padx'] = 5
         self['pady'] = 5
 
