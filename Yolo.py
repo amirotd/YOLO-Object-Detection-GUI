@@ -4,14 +4,15 @@ import os
 
 
 class Yolo:
-    def __init__(self, img, conf=0.5, thresh=0.3):
+    def __init__(self, img, path, conf=0.5, thresh=0.3):
         self.conf = conf
         self.thresh = thresh
         self.img = img
+        self.path = path
 
-        self.LabelsPath = os.path.sep.join(["yolo-coco", "coco.names"])
-        self.WeightsPath = os.path.sep.join(["yolo-coco", "yolov3.weights"])
-        self.ConfigPath = os.path.sep.join(["yolo-coco", "yolov3.cfg"])
+        self.LabelsPath = os.path.sep.join([self.path, "coco.names"])
+        self.WeightsPath = os.path.sep.join([self.path, "yolov3.weights"])
+        self.ConfigPath = os.path.sep.join([self.path, "yolov3.cfg"])
 
         self.LABELS = open(self.LabelsPath).read().strip().split("\n")
         self.boxes = []

@@ -19,9 +19,12 @@ class YoloGui(tk.Tk):
         self.grid_rowconfigure(0, weight=5)
         self.grid_rowconfigure(1, weight=5)
         self.grid_rowconfigure(2, weight=5)
+        self.grid_rowconfigure(3, weight=5)
 
         self.image_var = tk.StringVar(self)
         self.image_var.set('')
+        self.yolo_var = tk.StringVar(self)
+        self.yolo_var.set('')
         self.confidence_var = tk.StringVar(self)
         self.confidence_var.set('0.5')
         self.threshold_var = tk.StringVar(self)
@@ -36,8 +39,17 @@ class YoloGui(tk.Tk):
         self.upload_button = tk.Button(self.upload_frame, text='Browse', command=self.upload_file)
         self.upload_button.grid(column=1, row=0)
 
+        self.yolo_path_frame = tk.LabelFrame(self, text='Yolo Path')
+        self.yolo_path_frame.grid(column=0, row=1)
+
+        self.yolo_path_box = tk.Entry(self.yolo_path_frame, textvariable=self.yolo_var, width=60)
+        self.yolo_path_box.grid(column=0, row=0)
+
+        self.yolo_button = tk.Button(self.yolo_path_frame, text='Browse', command=self.set_path)
+        self.yolo_button.grid(column=1, row=0)
+
         self.settings_frame = tk.LabelFrame(self, text='Settings')
-        self.settings_frame.grid(column=0, row=1)
+        self.settings_frame.grid(column=0, row=2)
 
         self.confidence_label = tk.Label(self.settings_frame, text='Confidence')
         self.confidence_label.grid(column=0, row=0)
@@ -52,7 +64,7 @@ class YoloGui(tk.Tk):
         self.threshold_box.grid(column=1, row=1)
 
         self.buttons_frame = tk.Frame(self)
-        self.buttons_frame.grid(column=0, row=2)
+        self.buttons_frame.grid(column=0, row=3)
 
         self.start_button = tk.Button(self.buttons_frame, text='Start', command=self.start)
         self.start_button.grid(column=0, row=0)
@@ -67,8 +79,14 @@ class YoloGui(tk.Tk):
         self.upload_box.insert(0, self.image_var)
         self.upload_box.xview_moveto(1)
 
+    def set_path(self):
+        path = filedialog.askdirectory()
+        self.yolo_var = path
+        self.yolo_path_box.delete(0, tk.END)
+        self.yolo_path_box.insert(0, self.yolo_var)
+
     def start(self):
-        y = Yolo(self.image_var, float(self.confidence_var.get()), float(self.threshold_var.get()))
+        y = Yolo(self.image_var, self.yolo_var, float(self.confidence_var.get()), float(self.threshold_var.get()))
         y.start_process()
 
 
