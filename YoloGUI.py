@@ -51,13 +51,13 @@ class YoloGui(tk.Tk):
         self.settings_frame = tk.LabelFrame(self, text='Settings', bg='LightSteelBlue2')
         self.settings_frame.grid(column=0, row=2)
 
-        self.confidence_label = tk.Label(self.settings_frame, text='Confidence')
+        self.confidence_label = tk.Label(self.settings_frame, text='Confidence', bg='SteelBlue3', fg='white')
         self.confidence_label.grid(column=0, row=0)
 
         self.confidence_box = tk.Spinbox(self.settings_frame, textvariable=self.confidence_var, increment=0.1, from_=0, to=100, width=10)
         self.confidence_box.grid(column=1, row=0)
 
-        self.threshold_label = tk.Label(self.settings_frame, text='Threshold')
+        self.threshold_label = tk.Label(self.settings_frame, text='Threshold ', bg='SteelBlue3', fg='white')
         self.threshold_label.grid(column=0, row=1)
 
         self.threshold_box = tk.Spinbox(self.settings_frame, textvariable=self.threshold_var, increment=0.1, from_=0, to=100, width=10)
