@@ -1,6 +1,11 @@
+#
+# Object Detection with Yolo.V3
+#
+# Coded by Amir otd :)[https://github.com/amirotd]
+
 import tkinter as tk
 from tkinter import filedialog, messagebox
-from Yolo import Yolo
+from Yolo import YOLO
 
 
 class YoloGui(tk.Tk):
@@ -87,7 +92,7 @@ class YoloGui(tk.Tk):
 
     def start(self):
         try:
-            y = Yolo(self.image_var, self.yolo_var, float(self.confidence_var.get()), float(self.threshold_var.get()))
+            y = YOLO(self.image_var, self.yolo_var, float(self.confidence_var.get()), float(self.threshold_var.get()))
             y.start_process()
         except:
             messagebox.showerror("Error", "Please Enter a Valid Path")

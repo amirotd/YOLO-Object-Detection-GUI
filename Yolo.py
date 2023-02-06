@@ -1,9 +1,14 @@
+#
+# Object Detection with Yolo.V3
+#
+# Coded by Amir otd :)[https://github.com/amirotd]
+
 import numpy as np
 import cv2
 import os
 
 
-class Yolo:
+class YOLO:
     def __init__(self, img, path, conf=0.5, thresh=0.3):
         self.conf = conf
         self.thresh = thresh
