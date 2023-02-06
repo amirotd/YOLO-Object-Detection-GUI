@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from Yolo import Yolo
 
 
@@ -86,8 +86,11 @@ class YoloGui(tk.Tk):
         self.yolo_path_box.insert(0, self.yolo_var)
 
     def start(self):
-        y = Yolo(self.image_var, self.yolo_var, float(self.confidence_var.get()), float(self.threshold_var.get()))
-        y.start_process()
+        try:
+            y = Yolo(self.image_var, self.yolo_var, float(self.confidence_var.get()), float(self.threshold_var.get()))
+            y.start_process()
+        except:
+            messagebox.showerror("Error", "Please Enter a Valid Path")
 
 
 if __name__ == '__main__':
